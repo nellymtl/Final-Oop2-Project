@@ -1,53 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/21"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.grandviewmovietheatre.BrowserViewController"
-            styleClass="root-pane">
+<AnchorPane styleClass="root-pane" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.grandviewmovietheatre.BrowserViewController">
 
-    <VBox alignment="TOP_CENTER"
-          spacing="25"
-          AnchorPane.topAnchor="30.0"
-          AnchorPane.bottomAnchor="30.0"
-          AnchorPane.leftAnchor="30.0"
-          AnchorPane.rightAnchor="30.0">
+    <VBox alignment="TOP_CENTER" spacing="25" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="30.0">
 
         <!-- Cinema Name -->
-        <Label text="GRANDVIEW"
-               styleClass="cinema-title"/>
+        <Label styleClass="cinema-title" text="GRANDVIEW">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
 
-        <Label text="MOVIE THEATRE"
-               styleClass="cinema-subtitle"/>
+        <Label styleClass="cinema-subtitle" text="MOVIE THEATRE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
 
         <!-- Browse Card -->
-        <VBox alignment="CENTER"
-              spacing="20"
-              prefWidth="650"
-              maxWidth="650"
-              styleClass="register-card">
+        <VBox alignment="CENTER" maxWidth="650" prefWidth="650" spacing="20" styleClass="register-card">
 
             <padding>
-                <Insets top="30" right="30" bottom="30" left="30"/>
+                <Insets bottom="30" left="30" right="30" top="30" />
             </padding>
 
-            <Label text="Browse Movies"
-                   styleClass="register-title"/>
+            <Label styleClass="register-title" text="Browse Movies">
+            <font>
+               <Font name="System Bold" size="12.0" />
+            </font></Label>
 
-            <ListView fx:id="moviesListView"
-                      prefWidth="550"
-                      prefHeight="450"
-                      VBox.vgrow="ALWAYS"/>
+            <ListView fx:id="moviesListView" prefHeight="450" prefWidth="550" VBox.vgrow="ALWAYS" />
 
-            <Button text="Select"
-                    fx:id="selectButton"
-                    onAction="#handleSelectMovie"
-                    prefHeight="60"
-                    maxWidth="Infinity"
-                    styleClass="create-button"/>
+            <Button fx:id="selectButton" maxWidth="Infinity" onAction="#handleSelectMovie" prefHeight="60" styleClass="create-button" text="Select" />
 
         </VBox>
 
