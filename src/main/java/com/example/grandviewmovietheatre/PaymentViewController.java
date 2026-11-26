@@ -22,6 +22,10 @@ import javafx.stage.Stage;
  * client booking workflow. Displays the amount due, validates payment fields using
  * exceptions, and handles confirmation or navigation back to the summary view.
  */
+
+/**
+ * @author :Aya
+ */
 public class PaymentViewController {
 
     private static final NumberFormat CURRENCY_FORMAT =

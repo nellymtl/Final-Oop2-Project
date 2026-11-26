@@ -23,6 +23,9 @@ import javafx.stage.Stage;
  * subtotal, taxes, and total amount, validates ticket count with exceptions,
  * and passes the total to {@link PaymentViewController}.
  */
+/**
+ * @author :Aya
+ */
 public class ClientSummaryViewController {
 
     private static final BigDecimal TAX_RATE = new BigDecimal("0.14975");
