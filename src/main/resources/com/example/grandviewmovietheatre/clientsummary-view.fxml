@@ -13,7 +13,7 @@
 
 <BorderPane xmlns="http://javafx.com/javafx/21"
             xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.example.grandviewmovietheatre.ClientSummaryViewController"
+            fx:controller="Controllers.ClientSummaryViewController"
             prefWidth="540" prefHeight="440">
 
     <padding>

@@ -14,7 +14,7 @@
 
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.grandviewmovietheatre.PaymentViewController"
+            fx:controller="Controllers.PaymentViewController"
             prefWidth="520" prefHeight="420">
 
     <padding>

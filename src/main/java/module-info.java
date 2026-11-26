@@ -5,4 +5,8 @@ module com.example.grandviewmovietheatre {
 
     opens com.example.grandviewmovietheatre to javafx.fxml;
     exports com.example.grandviewmovietheatre;
+    exports Controllers;
+    opens Controllers to javafx.fxml;
+    exports Model;
+    opens Model to javafx.fxml;
 }
