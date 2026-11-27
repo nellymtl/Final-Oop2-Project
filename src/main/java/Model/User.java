@@ -1,8 +1,8 @@
 package Model;
 
 /**
- * Represents a user of the movie theatre system.
- * A user has a username, email, and password.
+ * Represents a user of the system.
+ * A user has a username or email, and password.
  *
  * This class is abstract because users can be
  * different types such as customers and managers.
