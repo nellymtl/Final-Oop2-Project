@@ -1,7 +1,7 @@
 package Model;
 
 /**
- * Represents a user of the movie theatre system.
+ * Represents a user of the system.
  *
  * @author Benjamin
  */

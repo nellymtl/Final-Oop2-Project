@@ -1,7 +1,7 @@
 package Model;
 
 /**
- * Represents a customer of the movie theatre.
+ * Represents a customer .
  *
  * @author Benjamin
  */
