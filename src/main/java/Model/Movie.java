@@ -4,9 +4,8 @@ package Model;
  * Represents a movie in the Grand View Movie Theatre (GVMT) system,
  * corresponding to the {@code MOVIE} entity in the conceptual EER model.
  */
-public class Movie {
+public class Movie extends IdentifiableEntity {
 
-    private final int movieId;
     private String title;
     private String genre;
     private int durationMinutes;
@@ -15,18 +14,15 @@ public class Movie {
     /**
      * Constructs a validated {@code Movie} instance.
      *
-     * @param movieId         unique movie identifier (must be positive)
-     * @param title           movie title (must not be blank)
-     * @param genre           movie genre (must not be blank)
+     * @param movieId         unique movie identifier (must be greater than zero)
+     * @param title           movie title (must not be null or blank)
+     * @param genre           movie genre (must not be null or blank)
      * @param durationMinutes runtime in minutes (must be greater than zero)
-     * @param rating          age or content rating (must not be blank)
+     * @param rating          age or content rating (must not be null or blank)
      * @throws IllegalArgumentException if any field fails validation
      */
     public Movie(int movieId, String title, String genre, int durationMinutes, String rating) {
-        if (movieId <= 0) {
-            throw new IllegalArgumentException("Movie ID must be greater than zero.");
-        }
-        this.movieId = movieId;
+        super(movieId, "Movie");
         setTitle(title);
         setGenre(genre);
         setDurationMinutes(durationMinutes);
@@ -39,7 +35,7 @@ public class Movie {
      * @return movie ID
      */
     public int getMovieId() {
-        return movieId;
+        return getId();
     }
 
     /**
@@ -128,5 +124,16 @@ public class Movie {
             throw new IllegalArgumentException("Movie rating cannot be empty.");
         }
         this.rating = rating.trim();
+    }
+
+    /**
+     * Returns a summary string describing this movie.
+     *
+     * @return movie summary
+     */
+    @Override
+    public String getSummary() {
+        return String.format("Movie #%d: %s (%s, %d min, %s)",
+                getMovieId(), title, genre, durationMinutes, rating);
     }
 }

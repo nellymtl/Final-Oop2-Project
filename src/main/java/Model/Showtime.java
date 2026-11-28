@@ -1,5 +1,4 @@
 package Model;
-import com.example.grandviewmovietheatre.ScreeningRoom;
 
 import java.time.LocalDateTime;
 
@@ -7,9 +6,8 @@ import java.time.LocalDateTime;
  * Represents a scheduled screening of a {@link Movie} inside a {@link ScreeningRoom},
  * corresponding to the {@code SHOWTIME} entity in the conceptual EER model.
  */
-public class Showtime {
+public class Showtime extends IdentifiableEntity {
 
-    private final int showtimeId;
     private Movie movie;
     private ScreeningRoom screeningRoom;
     private LocalDateTime showDateTime;
@@ -17,7 +15,7 @@ public class Showtime {
     /**
      * Constructs a validated {@code Showtime} instance.
      *
-     * @param showtimeId    unique showtime identifier (must be positive)
+     * @param showtimeId    unique showtime identifier (must be greater than zero)
      * @param movie         scheduled movie (must not be null)
      * @param screeningRoom hosting screening room (must not be null)
      * @param showDateTime  scheduled date and time (must not be null)
@@ -25,10 +23,7 @@ public class Showtime {
      */
     public Showtime(int showtimeId, Movie movie, ScreeningRoom screeningRoom,
                     LocalDateTime showDateTime) {
-        if (showtimeId <= 0) {
-            throw new IllegalArgumentException("Showtime ID must be greater than zero.");
-        }
-        this.showtimeId = showtimeId;
+        super(showtimeId, "Showtime");
         setMovie(movie);
         setScreeningRoom(screeningRoom);
         setShowDateTime(showDateTime);
@@ -40,7 +35,7 @@ public class Showtime {
      * @return showtime ID
      */
     public int getShowtimeId() {
-        return showtimeId;
+        return getId();
     }
 
     /**
@@ -113,8 +108,12 @@ public class Showtime {
      * Returns the movie identifier from the scheduled {@link Movie}.
      *
      * @return movie ID
+     * @throws IllegalStateException if {@code movie} is null
      */
     public int getMovieId() {
+        if (movie == null) {
+            throw new IllegalStateException("Scheduled movie is not set.");
+        }
         return movie.getMovieId();
     }
 
@@ -122,8 +121,23 @@ public class Showtime {
      * Returns the screening room identifier from the hosting {@link ScreeningRoom}.
      *
      * @return room ID
+     * @throws IllegalStateException if {@code screeningRoom} is null
      */
     public int getRoomId() {
+        if (screeningRoom == null) {
+            throw new IllegalStateException("Hosting screening room is not set.");
+        }
         return screeningRoom.getRoomId();
+    }
+
+    /**
+     * Returns a summary string describing this showtime.
+     *
+     * @return showtime summary
+     */
+    @Override
+    public String getSummary() {
+        return String.format("Showtime #%d: %s in %s at %s",
+                getShowtimeId(), movie.getTitle(), screeningRoom.getRoomName(), showDateTime);
     }
 }

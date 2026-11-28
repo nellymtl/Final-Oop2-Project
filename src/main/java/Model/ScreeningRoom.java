@@ -1,28 +1,24 @@
-package com.example.grandviewmovietheatre;
+package Model;
 
 /**
  * Represents a screening room in the Grand View Movie Theatre (GVMT) system,
  * corresponding to the {@code SCREENING_ROOM} entity in the conceptual EER model.
  */
-public class ScreeningRoom {
+public class ScreeningRoom extends IdentifiableEntity {
 
-    private final int roomId;
     private String roomName;
     private int capacity;
 
     /**
      * Constructs a validated {@code ScreeningRoom} instance.
      *
-     * @param roomId   unique screening room identifier (must be positive)
-     * @param roomName room name or label (must not be blank)
+     * @param roomId   unique screening room identifier (must be greater than zero)
+     * @param roomName room name or label (must not be null or blank)
      * @param capacity maximum seating capacity (must be greater than zero)
      * @throws IllegalArgumentException if any attribute fails validation
      */
     public ScreeningRoom(int roomId, String roomName, int capacity) {
-        if (roomId <= 0) {
-            throw new IllegalArgumentException("Room ID must be greater than zero.");
-        }
-        this.roomId = roomId;
+        super(roomId, "Room");
         setRoomName(roomName);
         setCapacity(capacity);
     }
@@ -33,7 +29,7 @@ public class ScreeningRoom {
      * @return room ID
      */
     public int getRoomId() {
-        return roomId;
+        return getId();
     }
 
     /**
@@ -78,5 +74,15 @@ public class ScreeningRoom {
             throw new IllegalArgumentException("Room capacity must be greater than 0.");
         }
         this.capacity = capacity;
+    }
+
+    /**
+     * Returns a summary string describing this screening room.
+     *
+     * @return room summary
+     */
+    @Override
+    public String getSummary() {
+        return String.format("Room #%d: %s (Capacity: %d)", getRoomId(), roomName, capacity);
     }
 }
