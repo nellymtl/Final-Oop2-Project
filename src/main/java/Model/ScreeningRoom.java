@@ -1,4 +1,4 @@
-package com.example.grandviewmovietheatre;
+package Model;
 
 /**
  * Represents a screening room in the Grand View Movie Theatre (GVMT) system,

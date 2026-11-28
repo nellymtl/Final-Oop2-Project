@@ -1,5 +1,5 @@
 package Model;
-import com.example.grandviewmovietheatre.ScreeningRoom;
+import Model.ScreeningRoom;
 
 import java.time.LocalDateTime;
 
