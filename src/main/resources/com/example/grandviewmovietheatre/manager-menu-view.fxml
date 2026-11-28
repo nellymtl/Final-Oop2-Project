@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="Controllers.ManagerMenuViewController"
+            prefWidth="520" prefHeight="400">
+
+    <padding>
+        <Insets top="20" right="24" bottom="20" left="24"/>
+    </padding>
+
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="12">
+            <VBox spacing="4">
+                <Label text="Manager Dashboard" style="-fx-font-size: 22px; -fx-font-weight: bold;"/>
+                <Label text="Grand View Movie Theatre — Select a management section"
+                       style="-fx-text-fill: #555555;"/>
+            </VBox>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Button fx:id="logoutButton" text="Logout" onAction="#handleLogout"/>
+        </HBox>
+    </top>
+
+    <center>
+        <VBox spacing="12" alignment="CENTER">
+            <padding>
+                <Insets top="20" bottom="20"/>
+            </padding>
+
+            <Button fx:id="moviesButton" text="Manage Movies" prefWidth="260" prefHeight="38"
+                    onAction="#handleOpenMovies"/>
+            <Button fx:id="roomsButton" text="Manage Screening Rooms" prefWidth="260" prefHeight="38"
+                    onAction="#handleOpenRooms"/>
+            <Button fx:id="showtimesButton" text="Manage Showtimes" prefWidth="260" prefHeight="38"
+                    onAction="#handleOpenShowtimes"/>
+            <Button fx:id="salesButton" text="Consult Tickets Sold" prefWidth="260" prefHeight="38"
+                    onAction="#handleOpenSales"/>
+
+            <Label fx:id="errorLabel" text="" wrapText="true" style="-fx-text-fill: #c62828;"/>
+        </VBox>
+    </center>
+</BorderPane>
