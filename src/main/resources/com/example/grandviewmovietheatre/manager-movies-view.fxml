@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="Controllers.ManagerMoviesViewController"
+            prefWidth="680" prefHeight="460">
+
+    <padding>
+        <Insets top="18" right="22" bottom="18" left="22"/>
+    </padding>
+
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="12">
+            <VBox spacing="2">
+                <Label text="Manage Movies" style="-fx-font-size: 20px; -fx-font-weight: bold;"/>
+                <Label text="Display, add, modify, or delete movies and their genres"
+                       style="-fx-text-fill: #555555;"/>
+            </VBox>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Button fx:id="backButton" text="Back to Menu" onAction="#handleBack"/>
+        </HBox>
+    </top>
+
+    <center>
+        <HBox spacing="16">
+            <padding>
+                <Insets top="16" bottom="10"/>
+            </padding>
+
+            <VBox spacing="8" HBox.hgrow="ALWAYS">
+                <Label text="Movies &amp; Genres" style="-fx-font-weight: bold;"/>
+                <ListView fx:id="movieListView" VBox.vgrow="ALWAYS"/>
+            </VBox>
+
+            <VBox spacing="10" prefWidth="280">
+                <Label text="Movie Details" style="-fx-font-weight: bold;"/>
+                <GridPane hgap="8" vgap="8">
+                    <columnConstraints>
+                        <ColumnConstraints percentWidth="36"/>
+                        <ColumnConstraints percentWidth="64"/>
+                    </columnConstraints>
+
+                    <Label text="Title:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                    <TextField fx:id="movieTitleField" promptText="Movie title"
+                               GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+                    <Label text="Genre:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                    <TextField fx:id="movieGenreField" promptText="e.g. Action, Drama"
+                               GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+                    <Label text="Duration (m):" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                    <TextField fx:id="movieDurationField" promptText="e.g. 125"
+                               GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+                    <Label text="Rating:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                    <TextField fx:id="movieRatingField" promptText="e.g. PG-13"
+                               GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+                </GridPane>
+
+                <HBox spacing="8">
+                    <Button text="Add" onAction="#handleAddMovie"/>
+                    <Button text="Modify" onAction="#handleUpdateMovie"/>
+                    <Button text="Delete" onAction="#handleDeleteMovie"/>
+                    <Button text="Clear" onAction="#handleClearForm"/>
+                </HBox>
+
+                <Label fx:id="statusLabel" text="" wrapText="true" style="-fx-text-fill: #2e7d32;"/>
+                <Label fx:id="errorLabel" text="" wrapText="true" style="-fx-text-fill: #c62828;"/>
+            </VBox>
+        </HBox>
+    </center>
+</BorderPane>
